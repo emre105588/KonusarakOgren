@@ -1,0 +1,75 @@
+﻿@model soru
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div align="center">
+    <form method="post" asp-action="testOlustur">
+        <select name="baslik" id="baslik" asp-for="baslik"   style="width:500px">
+            <option value="" disabled selected>Başlık Seçiniz...</option>
+            <option value="/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div/ul/li[2]/a[2]">@ViewBag.baslik1</option>
+            <option value="/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/ul/li[2]/a[2]">@ViewBag.baslik2</option>
+            <option value="/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[1]/div/ul/li[2]/a[2]">@ViewBag.baslik3</option>
+            <option value="/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[2]/div[1]/div[2]/div/ul/li[2]/a[2]">@ViewBag.baslik4</option>
+            <option value="/div/div[3]/div/div/div[2]/div[1]/div/div[1]/div[2]/div[2]/div/ul/li[2]/a[2]">@ViewBag.baslik5</option>
+        </select>
+        <br>
+        <textarea id="konu" style="margin: 0px; height: 242px; width: 500px; resize:none" readonly asp-for="icerik"></textarea>
+        <br />
+        <div align="center">
+            @for (int i = 0; i < 4; i++)
+            {
+
+                <textarea id="sorular" placeholder="Soru giriniz" style="margin: 0px; height: 25px; width: 500px; resize:none" asp-for="sorular[i]"></textarea>
+                <br />
+                <textarea id="secenek" placeholder="A)" style="margin: 0px; height: 25px; width: 250px; resize:none" asp-for="secenekA[i]"></textarea>
+                <textarea id="secenek" placeholder="B)" style="margin: 0px; height: 25px; width: 250px; resize:none" asp-for="secenekB[i]"></textarea>
+                <br />
+                <textarea id="secenek" placeholder="C)" style="margin: 0px; height: 25px; width: 250px; resize:none" asp-for="secenekC[i]"></textarea>
+                <textarea id="secenek" placeholder="D)" style="margin: 0px; height: 25px; width: 250px; resize:none" asp-for="secenekD[i]"></textarea>
+                <br />
+                <select asp-for="dogruCevap[i]" style="width:500px">
+                    <option >A</option>
+                    <option >B</option>
+                    <option >C</option>
+                    <option >D</option>
+                </select>
+                    <br />
+                    <br />
+                    }
+            </div>
+
+        <button type="submit">Gonder</button>
+
+    </form>
+    </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#baslik").change(function () {
+
+        
+        var baslik = $(this).val();
+
+        $.ajax({
+
+            url: '/Home/ıcerikleriGetir/',
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: {
+                baslik: baslik
+            },
+            
+            success: function (result) {
+                
+                 $("#konu").html(result);
+                   
+              
+            }
+        });
+
+    });
+</script>
+
+

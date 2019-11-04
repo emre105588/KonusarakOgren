@@ -1,0 +1,34 @@
+﻿
+@model List<soru>
+@{
+    ViewData["Title"] = "testleriGetir";
+    int i = 1;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<a href="/Home/Index" class="btn btn-primary">Makale Oluştur</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Başlık</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+        <tr>
+            
+            <th scope="row">@i</th>
+            <td><a href="/test/soru/@item.id">@item.baslik</a></td>
+            <td><a href="/test/sil/@item.id">Sil</a></td>
+           
+        </tr>
+            i++;
+        }
+
+</table>
+
+

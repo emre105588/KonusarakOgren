@@ -1,0 +1,214 @@
+﻿@model IEnumerable<soruGetir>
+
+@{
+    ViewData["Title"] = "soru";
+    int i = 0;
+    int j = 0;
+}
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+    <div align="center">
+
+<label>@ViewBag.baslik</label>
+<br />
+
+<textarea id="konu" style="margin: 0px; height: 242px; width: 500px; resize:none" readonly>@ViewBag.icerik</textarea>
+<br />
+</div>
+    <div align="center">
+        @foreach (var item in Model)
+        {
+
+            <label id="" placeholder="Soru giriniz" style="margin: 0px; height: 25px; width: 500px; ">@item.sorular</label>
+            <br />
+            <button type="button" id="@j" style="margin: 0px; height:  25px; border-style:solid; width: 250px; " class="@i " value="@item.dogruCevap">@item.secenekA</button>
+
+            <button type="button" id="@(j+1)" style="margin: 0px; height:  25px; border-style:solid; width: 250px; " class="@(i+1)  " value="@item.dogruCevap">@item.secenekB</button>
+            <br />
+            <button type="button" id="@(j+2)" style="margin: 0px; height: 25px;border-style:solid; width: 250px;" class="@(i+2) " value="@item.dogruCevap">@item.secenekC</button>
+            <button type="button" id="@(j+3)" style="margin: 0px; height: 25px;border-style:solid; width: 250px;" class="@(i+3)" value="@item.dogruCevap">@item.secenekD</button>
+            <br />
+            i += 4;
+            j += 4;
+        }
+        <button id="gonder" class="btn btn-success">Sınavı tamamla</button>
+    </div>
+
+
+
+
+<script type="text/javascript">
+    var id1 = "";
+    var sınıf1 = "";
+    var id2 = "";
+    var sınıf2 = "";
+    var id3 = "";
+    var sınıf3 = "";
+    var id4 = "";
+    var sınıf4 = "";
+    var i = 0;
+
+    $("#0").click(function () {
+
+        id1 = $(this).text();
+        sınıf1 = $(this).attr('class');
+
+
+    }
+    );
+    $("#1").click(function () {
+
+        id1 = $(this).text();
+        sınıf1 = $(this).attr('class');
+
+
+    }
+    );
+    $("#2").click(function () {
+
+        id1 = $(this).text();
+        sınıf1 = $(this).attr('class');
+
+
+    }
+    );
+    $("#3").click(function () {
+
+        id1 = $(this).text();
+        sınıf1 = $(this).attr('class');
+
+
+    }
+    );
+    $("#4").click(function () {
+
+        id2 = $(this).text();
+        sınıf2 = $(this).attr('class');
+
+
+    }
+    );
+    $("#5").click(function () {
+
+        id2 = $(this).text();
+        sınıf2 = $(this).attr('class');
+
+
+    }
+    );
+    $("#6").click(function () {
+
+        id2 = $(this).text();
+        sınıf2 = $(this).attr('class');
+
+
+    }
+    );
+    $("#7").click(function () {
+
+        id2 = $(this).text();
+        sınıf2 = $(this).attr('class');
+
+
+    }
+    );
+    $("#8").click(function () {
+
+        id3 = $(this).text();
+        sınıf3 = $(this).attr('class');
+
+    }
+    );
+    $("#9").click(function () {
+
+        id3 = $(this).text();
+        sınıf3 = $(this).attr('class');
+
+
+    }
+    );
+    $("#10").click(function () {
+
+        id3 = $(this).text();
+        sınıf3 = $(this).attr('class');
+
+    }
+    );
+    $("#11").click(function () {
+
+        id3 = $(this).text();
+        sınıf3 = $(this).attr('class');
+
+
+    }
+    );
+    $("#12").click(function () {
+
+        id4 = $(this).text();
+        sınıf4 = $(this).attr('class');
+
+
+    }
+    );
+    $("#13").click(function () {
+
+        id4 = $(this).text();
+        sınıf4 = $(this).attr('class');
+
+    }
+    );
+    $("#14").click(function () {
+
+        id4 = $(this).text();
+        sınıf4 = $(this).attr('class');
+
+
+    }
+    );
+    $("#15").click(function () {
+
+        id4 = $(this).text();
+        sınıf4 = $(this).attr('class');
+
+
+    }
+    );
+
+    $("#gonder").click(function () {
+
+        if (id1 == $("#0").val()) {
+
+            $("." + sınıf1).css('background', 'green')
+
+        }
+        else
+            $("." + sınıf1).css('background', 'red')
+        if (id2 == $("#4").val()) {
+            $("." + sınıf2).css('background', 'green')
+
+        }
+        else
+            $("." + sınıf2).css('background', 'red')
+        if (id3 == $("#8").val()) {
+
+
+            $("." + sınıf3).css('background', 'green')
+
+        }
+        else
+            $("." + sınıf3).css('background', 'red')
+        if (id4 == $("#12").val()) {
+
+            $("." + sınıf4).css('background', 'green')
+
+        }
+        else
+            $("." + sınıf4).css('background', 'red')
+        $("#gonder").attr('disabled', 'true');
+        $("div button").attr('disabled', 'true');
+    });
+
+</script>
